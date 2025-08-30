@@ -9,7 +9,7 @@ source:
   sha256: 1695a87e3fc4c20d9b9140f5238cac0514c411b750e8cdcec5d8320c71f62e99
 
 build:
-  number: 0
+  number: 1
   # if you care about ppc, please debug the failures
   skip: true  # [ppc64le]
 
