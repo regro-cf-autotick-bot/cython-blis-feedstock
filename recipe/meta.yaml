@@ -1,4 +1,4 @@
-{% set version = "1.3.0" %}
+{% set version = "1.3.2" %}
 
 package:
   name: cython-blis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/b/blis/blis-{{ version }}.tar.gz
-  sha256: 1695a87e3fc4c20d9b9140f5238cac0514c411b750e8cdcec5d8320c71f62e99
+  sha256: e407972e5dd877ee89f1ef8ce66e66e80e4dc062bce43f180ce809918ba6d989
 
 build:
   number: 0
@@ -21,7 +21,8 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - clangdev  # [win]
+    # cannot use clang 19+ due to https://github.com/llvm/llvm-project/pull/92883; see #67
+    - clangdev <19  # [win]
   host:
     - python
     - pip

@@ -1,0 +1,3 @@
+# cannot use clang 19+ due to https://github.com/llvm/llvm-project/pull/92883; see #67
+c_compiler_version:  # [osx and x86_64]
+  - 18               # [osx and x86_64]
