@@ -5,12 +5,15 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/b/blis/blis-{{ version }}.tar.gz
-  sha256: e407972e5dd877ee89f1ef8ce66e66e80e4dc062bce43f180ce809918ba6d989
-  patches:
-    - patches/0001-backport-clang-checks-from-upstream-configure.patch
-    # backport (morally speaking) https://github.com/flame/blis/pull/908
-    - patches/0002-Blacklist-knl-for-clang-19.patch
+  - url: https://github.com/explosion/cython-blis/archive/refs/tags/release-v{{ version }}.tar.gz
+    sha256: fa9b597ebbd76d39d81729f6676a7efbc61ef53467b09d931c06e5d753c3bbb3
+    patches:
+      - patches/0001-backport-clang-checks-from-upstream-configure.patch
+      # backport (morally speaking) https://github.com/flame/blis/pull/908
+      - patches/0002-Blacklist-knl-for-clang-19.patch
+  - folder: flame-blis
+    git_url: https://github.com/honnibal/blis
+    git_rev: e81f7291c52c04c4bdbee0aba3e39d703454eab5
 
 build:
   number: 0
