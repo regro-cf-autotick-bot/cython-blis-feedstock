@@ -1,0 +1,33 @@
+From e5bc9ddfca1db11f99b5f4df993195f3f66ac2b7 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Sun, 16 Nov 2025 15:30:05 +1100
+Subject: [PATCH 2/2] Blacklist knl for clang 19+
+
+Based on https://github.com/flame/blis/pull/908
+---
+ extra-include/configure | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/extra-include/configure b/extra-include/configure
+index 0f620bf..8650396 100755
+--- a/extra-include/configure
++++ b/extra-include/configure
+@@ -1155,7 +1155,7 @@ check_compiler()
+ 	# Specific:
+ 	#
+ 	#   skx: icc 15.0.1+, gcc 6.0+, clang 3.9+
+-	#   knl: icc 14.0.1+, gcc 5.0+, clang 3.5+
++	#   knl: icc 14.0.1+, gcc 5.0+, clang 3.5-18
+ 	#   haswell: any
+ 	#   sandybridge: any
+ 	#   penryn: any
+@@ -1251,6 +1251,9 @@ check_compiler()
+ 			if [[ ${cc_major} -lt 11 ]]; then
+ 				blacklistcc_add "armsve"
+ 			fi
++			if [[ ${cc_major} -ge 19 ]]; then
++				blacklistcc_add "knl"
++			fi
+ 		fi
+ 	fi
+ }

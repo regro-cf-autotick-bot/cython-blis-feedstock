@@ -7,6 +7,10 @@ package:
 source:
   url: https://pypi.org/packages/source/b/blis/blis-{{ version }}.tar.gz
   sha256: e407972e5dd877ee89f1ef8ce66e66e80e4dc062bce43f180ce809918ba6d989
+  patches:
+    - patches/0001-backport-clang-checks-from-upstream-configure.patch
+    # backport (morally speaking) https://github.com/flame/blis/pull/908
+    - patches/0002-Blacklist-knl-for-clang-19.patch
 
 build:
   number: 0
