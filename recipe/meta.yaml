@@ -21,7 +21,8 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - clangdev  # [win]
+    # cannot use clang 19+ due to https://github.com/llvm/llvm-project/pull/92883; see #67
+    - clangdev <19  # [win]
   host:
     - python
     - pip
